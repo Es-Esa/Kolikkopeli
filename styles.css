@@ -1,0 +1,652 @@
+:root {
+    --primary-color: #007bff; /* Sininen teemaväri */
+    --secondary-color: #6c757d; /* Harmaa */
+    --light-color: #f8f9fa; /* Vaalea tausta */
+    --dark-color: #343a40; /* Tumma teksti */
+    --border-radius: 8px; /* Pyöristetyt kulmat */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hienovarainen varjo */
+}
+
+body {
+    /* Varmistetaan overflow: hidden */
+    overflow: hidden;
+    /* Muut body-säännöt säilyvät */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    /* padding: 20px; Poistetaan tämä, koska pilvet tarvitsevat koko leveyden */
+    box-sizing: border-box;
+    /* background-image: url('bg.png'); */
+    background-image: url('images/bg.png'); /* Päivitetty polku */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 0; /* Poistetaan väli */
+    color: var(--primary-color);
+    position: relative; /* Varmistetaan että sisältö pysyy pilvien päällä */
+    z-index: 2; /* Varmistetaan, että header on mainin ja taustapilvien edessä */
+}
+
+header h1 {
+    margin-bottom: 5px;
+    font-size: 2.8em; /* Suurempi otsikko */
+    display: flex; /* Käytetään flexboxia asetteluun */
+    align-items: center; /* Keskitetään pystysuunnassa */
+    justify-content: center; /* Keskitetään vaakasuunnassa */
+    gap: 15px; /* Väliä elementtien välille */
+}
+
+header h1 img {
+    height: 1em; /* Asetetaan kuvan korkeus suhteessa fonttikokoon */
+    vertical-align: middle; /* Varmistetaan pystysuuntainen keskitys (lisävarmistus) */
+}
+
+/* Poistetaan vanha header p -sääntö
+header p {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+*/
+
+main {
+    padding: 30px 40px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    width: 100%;
+    max-width: 600px; /* Rajoitetaan maksimileveyttä */
+    box-sizing: border-box;
+    background-color: #fff; /* Palautetaan normaali taustaväri */
+    border-radius: var(--border-radius); /* Palautetaan pyöristetyt kulmat */
+    position: relative; /* Varmistetaan että sisältö pysyy pilvien päällä */
+    z-index: 1; /* Asetetaan main taustapilvien eteen, mutta headerin taakse */
+    margin-top: 20px; /* Normaali marginaali */
+    padding-top: 0;
+}
+
+main h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: var(--dark-color);
+    font-size: 2em; /* Suurennetaan oletusfonttikokoa */
+}
+
+main p {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 25px; /* Lisätään väliä otsikkoon */
+}
+
+.game-options {
+    display: flex;
+    flex-direction: column; /* Asetetaan napit allekkain */
+    gap: 20px; /* Väliä nappien välille */
+    align-items: stretch; /* Venyttää napit samanlevyisiksi */
+}
+
+.game-option {
+    display: flex; /* Asetetaan ikoni ja teksti vierekkäin */
+    align-items: center; /* Keskitetään pystysuunnassa */
+    justify-content: center; /* Keskitetään vaakasuunnassa */
+    padding: 15px 20px;
+    font-size: 1.3em; /* Suurennetaan oletusfonttikokoa */
+    color: #fff;
+    background: linear-gradient(135deg, #87CEFA, #00BFFF); /* Lisätään taivaansininen gradientti (LightSkyBlue -> DeepSkyBlue) */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.game-option:hover {
+    background: linear-gradient(135deg, #add8e6, #1e90ff); /* Vaaleampi/kirkkaampi sininen hoverissa (LightBlue -> DodgerBlue) */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.game-option:active {
+     transform: translateY(-1px);
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.game-option .icon {
+    font-size: 1.5em;
+    margin-right: 15px;
+    line-height: 1;
+}
+
+/* Responsiivisuus pienemmille näytöille */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    header p {
+        font-size: 1em;
+    }
+    main {
+        padding: 25px 15px;
+    }
+    /* Säädetään myös responsiivista kokoa main p:lle */
+    main p {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    /* Lisätään sääntö h2-otsikolle pienillä näytöillä */
+    main h2 {
+        font-size: 1.6em; /* Pienennetään fonttikokoa */
+    }
+    .game-options {
+        gap: 15px;
+    }
+    .game-option {
+        font-size: 1.1em; /* Säädetään responsiivista kokoa */
+        padding: 12px 15px;
+    }
+    .game-option .icon {
+         margin-right: 10px;
+    }
+}
+
+/* --- Pelialueen tyylit --- */
+
+#game-area {
+    /* Periytyy main-tyyleistä, voidaan lisätä pelikohtaisia säätöjä */
+    padding-top: 20px; /* Säädetään tämä sopivaksi pilven alareunaan nähden */
+    padding-bottom: 40px;
+}
+
+.slot-machine {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.reel {
+    width: 100px;
+    height: 120px;
+    border: 3px solid var(--secondary-color);
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--dark-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Muokataan toissijaisen napin ulkonäköä */
+.game-option.secondary {
+    background: var(--secondary-color);
+}
+
+.game-option.secondary:hover {
+    background: #5a6268; /* Tummempi harmaa hoverissa */
+}
+
+/* --- Peliruudukon tyylit (r_game.html) --- */
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 saraketta */
+    gap: 15px;
+    margin: 30px 0;
+    perspective: 1000px; /* Tarvitaan kääntöefektiin (jos lisätään myöhemmin) */
+}
+
+.grid-card {
+    aspect-ratio: 1 / 1; /* Neliömäiset kortit */
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Piilottaa kolikon aluksi */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.3s ease-out;
+}
+
+/* Lisätään tyyli klikkausanimaatiolle */
+.grid-card.card-clicked {
+    transform: scale(0.92); /* Pienennetään hieman klikatessa */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Voidaan myös hieman pienentää varjoa */
+}
+
+.grid-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    object-position: center;
+    transition: opacity 0.3s ease-out; /* Häivytys kun kuva katoaa */
+    margin: auto; /* Jätetään tämäkin varmuuden vuoksi */
+}
+
+.coin-image {
+    position: absolute;
+    width: 60%; /* Kolikon koko suhteessa korttiin */
+    height: 60%;
+    object-fit: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Aluksi piilossa ja pieni */
+    transition: transform 0.3s ease-in-out; /* Animoidaan ilmestyminen */
+    z-index: 5; /* Varmistetaan, että kolikko on kuvan päällä, jos molemmat näkyvillä */
+}
+
+/* Tyyli kortille, kun kolikko on löytynyt */
+.grid-card.found .coin-image {
+    transform: translate(-50%, -50%) scale(1); /* Skaalataan näkyviin */
+}
+
+/* Tyyli kortille, kun kuvaa klikataan (eikä kolikkoa löydy) */
+.grid-card.hidden .card-image {
+    opacity: 0;
+}
+
+/* Tyyli kortille, jota ei voi enää klikata */
+.grid-card.disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.grid-card.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Pilvi-animaatiot --- */
+
+/* Poistetaan vanha pilvi-CSS */
+
+/* --- Uudet pilvi-animaatiot --- */
+
+#clouds-container {
+    /* Poistetaan vanhat säännöt */
+    /* Lisätään tarvittavat säännöt, jos containerille tarvitaan jotain */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* padding: 100px 0; Tätä ei välttämättä tarvita, koska pilvet asemoidaan absoluuttisesti */
+    /* Poistetaan taustagradientti, koska bodylla on taustakuva */
+    z-index: 0; /* Asetetaan taustapilvet alimmaksi */
+    pointer-events: none;
+    overflow: hidden; /* Varmistetaan piilotus */
+}
+
+.cloud {
+    width: 200px;
+    height: 60px;
+    background: #fff;
+    border-radius: 200px;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    position: absolute; /* Muutetaan relative -> absolute */
+    opacity: 0.85; /* Lisätään hieman läpinäkyvyyttä */
+}
+
+.cloud:before, .cloud:after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 100px;
+    height: 80px;
+    top: -15px;
+    left: 10px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+    width: 120px;
+    height: 120px;
+    top: -55px;
+    left: auto;
+    right: 15px;
+}
+
+.x1 {
+    top: 50px; /* Asetetaan alkupositio */
+    left: 100px; /* Asetetaan alkupositio */
+    /* animation: moveclouds 15s linear infinite; */
+    animation: moveclouds 45s linear infinite; /* Hidastetaan */
+    -webkit-animation: moveclouds 45s linear infinite;
+    -moz-animation: moveclouds 45s linear infinite;
+    -o-animation: moveclouds 45s linear infinite;
+}
+
+.x2 {
+    top: 120px; /* Säädetään positioita */
+    left: 200px;
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    opacity: 0.6;
+    /* animation: moveclouds 25s linear infinite; */
+    animation: moveclouds 55s linear infinite; /* Hidastetaan */
+    -webkit-animation: moveclouds 55s linear infinite;
+    -moz-animation: moveclouds 55s linear infinite;
+    -o-animation: moveclouds 55s linear infinite;
+}
+
+.x3 {
+    top: -50px; /* Säädetään positioita */
+    left: -200px;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    opacity: 0.8;
+    /* animation: moveclouds 20s linear infinite; */
+    animation: moveclouds 60s linear infinite; /* Hidastetaan */
+    -webkit-animation: moveclouds 60s linear infinite;
+    -moz-animation: moveclouds 60s linear infinite;
+    -o-animation: moveclouds 60s linear infinite;
+}
+
+.x4 {
+    top: 180px; /* Säädetään positioita */
+    left: 470px;
+    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    opacity: 0.75;
+    /* animation: moveclouds 18s linear infinite; */
+    animation: moveclouds 50s linear infinite; /* Hidastetaan */
+    -webkit-animation: moveclouds 50s linear infinite;
+    -moz-animation: moveclouds 50s linear infinite;
+    -o-animation: moveclouds 50s linear infinite;
+}
+
+.x5 {
+    top: 250px; /* Säädetään positioita */
+    left: -150px;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    opacity: 0.8;
+    /* animation: moveclouds 20s linear infinite; */
+    animation: moveclouds 40s linear infinite; /* Hidastetaan */
+    -webkit-animation: moveclouds 40s linear infinite;
+    -moz-animation: moveclouds 40s linear infinite;
+    -o-animation: moveclouds 40s linear infinite;
+}
+
+@keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1200px;} /* Lisätään hieman matkaa */
+}
+
+@-webkit-keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1200px;}
+}
+
+@-moz-keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1200px;}
+}
+
+@-o-keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1200px;}
+}
+
+/* Pelaajainfo (r_game.html) */
+/* Poistetaan vanhat säännöt */
+
+/* Poistetaan turhat säännöt */
+/*
+#turn-indicator {
+    ...
+}
+#turn-indicator .player-number {
+    ...
+}
+*/
+
+#clouds-info-container {
+    display: flex;
+    /* flex-direction: column; */ /* Muutetaan riviksi */
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch; /* Venyttää laatikot saman korkuisiksi */
+    position: relative; /* Tarvitaan z-indexiin */
+    margin-top: 20px; /* Pidetään tämä väli otsikkoon */
+    /* margin-bottom: 20px; Poistetaan */
+    z-index: 2; /* Varmistetaan että tämä container on mainin päällä */
+    gap: 20px; /* Väli laatikoiden välille */
+    padding: 0 10px; /* Vähän tilaa reunoille */
+}
+
+/* Poistetaan .scores -sääntö */
+/*
+.scores {
+    ...
+}
+*/
+
+/* Uudet säännöt infolaatikoille */
+.info-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Hieman läpikuultava valkoinen */
+    border-radius: var(--border-radius);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center; /* Keskitä sisältö pystysuunnassa */
+    gap: 15px; /* Väli ikonin ja tekstin välille */
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    flex-grow: 1; /* Antaa laatikoiden kasvaa */
+    flex-basis: 0; /* Jakaa tilan tasaisesti */
+}
+
+.info-box .icon {
+    font-size: 2em; /* Ikonin koko */
+    line-height: 1;
+}
+
+/* Säännöt tekstisisällölle laatikoiden sisällä */
+.info-box div,
+.info-box span { /* Huom: Tämä kohdistuu myös ikoniin, mutta fonttikoko asetetaan erikseen */
+    color: var(--dark-color);
+    font-weight: 500;
+    font-size: 1.4em; /* Tekstin koko */
+}
+
+/* Varmistetaan, että score-spanit eivät vaikuta isän flex-asetelmiin liikaa */
+#score-1,
+#score-2 {
+    display: inline-flex; /* Pidä tämä */
+    align-items: center;
+    line-height: 1.3; /* Säädetään tätä */
+    white-space: nowrap;
+}
+
+
+/* Säännöt kolikolle */
+.score-coin-img {
+    height: 1.3em; /* Säädetään kokoa fontin mukaan */
+    margin-left: 6px; /* Säädetään väliä */
+    vertical-align: middle;
+}
+
+/* Voittoviestin tyylit (r_game.html) */
+#win-message-overlay {
+    position: fixed; /* Pysyy paikallaan */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Puoliläpinäkyvä musta tausta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Varmistaa, että on kaiken päällä */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#win-message-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Ei voi klikata piilotettuna */
+}
+
+#win-message-content {
+    background-color: #fff;
+    padding: 40px 50px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+#win-message-overlay.hidden #win-message-content {
+    transform: scale(0.8); /* Pieni kutistusefekti piilotettaessa */
+}
+
+#win-message-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+#win-message-content button {
+    margin: 10px;
+    min-width: 200px; /* Levennetään nappeja hieman */
+}
+
+/* Koristepilvet pelialueen alaosassa */
+/* Poistetaan vanhat .bottom-cloud ja ID-kohtaiset säännöt */
+
+.static-bottom-cloud {
+    /* Kopioidaan perusmuoto liikkuvilta pilviltä */
+    width: 200px; /* Käytetään liikkuvien pilvien peruskokoa pohjana */
+    height: 60px;
+    background: #fff;
+    border-radius: 200px;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    position: absolute;
+    opacity: 1; /* Ei läpinäkyvyyttä */
+    z-index: -1; /* Sisällön taakse */
+    transform-origin: bottom center; /* Skaalataan alareunasta */
+}
+
+.static-bottom-cloud div {
+    /* Kopioidaan sisäisten divien tyylit */
+    position: absolute;
+    /* background: #f1f1f1; Muutetaan valkoiseksi */
+    background: #fff;
+    border-radius: 50%;
+    /* box-shadow: inset -2px -3px 0 0 #d8d8d8; Poistetaan varjo */
+    width: 100px; /* Säädetään pallojen kokoa suhteessa pilven kokoon */
+    height: 80px;
+    bottom: 0;
+    z-index: 10;
+    /* Poistetaan left, koska käytetään nth-child alla */
+}
+
+/* Asetellaan sisäiset divit kuten liikkuvissa pilvissä */
+.static-bottom-cloud div:nth-child(1) {
+    width: 100px; height: 80px; left: 10px; top: -15px; transform: rotate(30deg);
+}
+.static-bottom-cloud div:nth-child(2) {
+     width: 120px; height: 120px; left: auto; right: 15px; top: -55px; transform: rotate(30deg);
+}
+/* Lisätään kaksi muuta palloa monipuolisempaan muotoon */
+.static-bottom-cloud div:nth-child(3) {
+    width: 80px; height: 70px; left: 50px; top: -25px; transform: rotate(-15deg); z-index: 9;
+}
+.static-bottom-cloud div:nth-child(4) {
+    width: 90px; height: 90px; left: 90px; top: -40px; transform: rotate(10deg); z-index: 8;
+}
+
+
+/* Sijoitetaan ja skaalataan kolme pilveä */
+#static-bottom-1 {
+    left: 10%; /* Vasen reuna */
+    bottom: -40px; /* Alempi */
+    transform: scale(1.8); /* Koko */
+}
+
+#static-bottom-2 {
+    left: 50%; /* Keskelle */
+    bottom: -44px; /* Hieman ylemmäs (-4px) */
+    transform: translateX(-50%) scale(2.2); /* Keskitys ja koko */
+}
+
+#static-bottom-3 {
+    right: 10%; /* Oikea reuna */
+    bottom: -48px; /* Vielä ylemmäs (-4px) */
+    transform: scale(1.8); /* Koko */
+}
+
+/* Poistetaan vanhat right:before/after -säännöt, koska ne periytyvät */
+
+/* Responsiivisuus pelaajatiedoille */
+@media (max-width: 700px) {
+    #clouds-info-container {
+        flex-direction: column; /* Laatikot allekkain */
+        align-items: center; /* Keskistetään laatikot */
+        gap: 15px; /* Pienennetään väliä */
+        margin-top: 15px;
+    }
+
+    .info-box {
+        flex-grow: 0; /* Estetään turha kasvu */
+        flex-basis: auto;
+        width: 90%; /* Kapeampi leveys */
+        max-width: 400px; /* Maksimileveys */
+        padding: 10px 15px; /* Pienempi padding */
+        gap: 10px; /* Pienempi väli ikonille */
+    }
+
+    .info-box .icon {
+        font-size: 1.6em; /* Pienennetään ikonia */
+    }
+
+    .info-box div,
+    .info-box span {
+        font-size: 1.2em; /* Pienennetään tekstiä */
+    }
+
+    .score-coin-img {
+        height: 1.1em; /* Pienennetään kolikkoa */
+        margin-left: 5px;
+    }
+} 

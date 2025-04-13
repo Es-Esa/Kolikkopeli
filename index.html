@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolikkopeli - Puheterapia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="clouds-container">
+        <div class="cloud x1"></div>
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+
+    <header>
+        <h1>
+            <img src="images/Kolikko.png" alt="Kolikko">
+            Kolikkopeli
+            <img src="images/Kolikko.png" alt="Kolikko">
+        </h1>
+    </header>
+
+    <main>
+        <p>Puheterapian tueksi</p>
+        <h2>Valitse harjoitus:</h2>
+        <div class="game-options">
+            <button class="game-option" data-game="r" onclick="startGame('r')">
+                <span class="icon">🗣️</span> R-äänne
+            </button>
+            <button class="game-option" data-game="s-start" onclick="startGame('s-start')">
+                <span class="icon">▶️</span> S-äänne (sanan alussa)
+            </button>
+            <button class="game-option" data-game="s-end" onclick="startGame('s-end')">
+                <span class="icon">◀️</span> S-äänne (sanan lopussa)
+            </button>
+        </div>
+    </main>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html> 

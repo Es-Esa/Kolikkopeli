@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolikkopeli - R-äänne</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pilvet (sama rakenne kuin index.html) -->
+    <div id="clouds-container">
+        <div class="cloud x1"></div>
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+
+    <header>
+        <h1>
+            <!-- Voit halutessasi lisätä Kolikko.png tähänkin -->
+            R-äänne Harjoitus
+        </h1>
+        <!-- Muutetaan pelaajatiedot -->
+        <div id="clouds-info-container">
+            <!-- Poistetaan vanha rakenne -->
+
+            <!-- Laatikko vuoronilmaisimelle -->
+            <div class="info-box turn-box">
+                 <span class="icon">⏳</span> <!-- Ikoni vuorolle -->
+                 <div id="turn-indicator">Pelaajan 1 vuoro</div>
+            </div>
+
+            <!-- Laatikko pelaajalle 1 -->
+            <div class="info-box score-box player1-box">
+                <span class="icon">👤</span> <!-- Ikoni pelaajalle 1 -->
+                <span id="score-1">Pelaaja 1: </span>
+            </div>
+
+            <!-- Laatikko pelaajalle 2 -->
+            <div class="info-box score-box player2-box">
+                 <span class="icon">👥</span> <!-- Ikoni pelaajalle 2 -->
+                 <span id="score-2">Pelaaja 2: </span>
+            </div>
+
+        </div>
+    </header>
+
+    <main id="game-area">
+        <h2>Etsi kolikot! Klikkaa kuvaa ja sano sana.</h2>
+
+        <!-- Ruudukko kuville -->
+        <div id="grid-container"></div>
+
+        <!-- Pelinappulat -->
+        <div class="game-controls">
+            <!-- Poistetaan Pyöräytä-nappi -->
+            <button id="back-button" class="game-option secondary">Takaisin</button>
+        </div>
+
+        <!-- Lisätään koristepilvet alaosaan -->
+        <!-- Poistetaan vanhat -->
+        <!-- <div class="bottom-cloud" id="bottom-cloud-left"></div> -->
+        <!-- <div class="bottom-cloud" id="bottom-cloud-right"></div> -->
+
+        <!-- Lisätään uudet, liikkuvien pilvien tyyliset -->
+        <div class="static-bottom-cloud" id="static-bottom-1">
+            <div></div><div></div><div></div><div></div>
+        </div>
+         <div class="static-bottom-cloud" id="static-bottom-2">
+            <div></div><div></div><div></div><div></div>
+        </div>
+         <div class="static-bottom-cloud" id="static-bottom-3">
+            <div></div><div></div><div></div><div></div>
+        </div>
+
+    </main>
+
+    <!-- Voittoviesti (piilotettu aluksi) -->
+    <div id="win-message-overlay" class="hidden">
+        <div id="win-message-content">
+            <h2 id="winner-text">Pelaaja X Voitti!</h2>
+            <button id="play-again-button" class="game-option">Pelaa Uudelleen</button>
+            <button id="back-to-menu-button" class="game-option secondary">Takaisin Valikkoon</button>
+        </div>
+    </div>
+
+    <script src="scripts.js" defer></script>
+    <!-- Lisätään pelikohtainen scripti tarvittaessa -->
+    <!-- <script src="r_game_script.js" defer></script> -->
+</body>
+</html> 
